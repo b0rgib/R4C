@@ -16,10 +16,12 @@ def workbook_manager():
         else:
             robots_grouped[robot['model']] = [robot]
     wb = Workbook()
+    wb.active.append(('No robots this week!',))
     for model in robots_grouped:
         ws = wb.create_sheet(model)
         ws.append(('Модель', 'Версия', 'Количество за неделю'))
         for serial in robots_grouped[model]:
             ws.append(list(serial.values()))
-    del wb['Sheet']
+    if robots:
+        del wb['Sheet']
     return save_virtual_workbook(wb)
