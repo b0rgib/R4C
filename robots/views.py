@@ -17,4 +17,4 @@ def add(request):
                       version=version, created=created)
         robot.save()
         return Response(status=status.HTTP_200_OK)
-    return Response(data='Invalid request', status=status.HTTP_400_BAD_REQUEST)
+    return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
