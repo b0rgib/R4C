@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'customers',
     'orders',
-    'robots'
+    'robots',
+    'rest_framework',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -121,3 +123,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# Host for sending e-mail.
+EMAIL_HOST = 'smtp.yandex.ru'
+
+# Port for sending e-mail.
+EMAIL_PORT = 465
+
+# Optional SMTP authentication information for EMAIL_HOST.
+EMAIL_HOST_USER = '***'
+EMAIL_HOST_PASSWORD = '***'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
