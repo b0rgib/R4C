@@ -3,6 +3,16 @@ from rest_framework.decorators import api_view
 from . serializers import RobotSerializer
 from . models import Robot
 from rest_framework import status
+from django.http import HttpResponse
+from . workbook_manager import workbook_manager
+
+
+
+def get_excel(request):
+    response = HttpResponse(content=workbook_manager(),
+                            content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename=weekly_robots.xlsx'
+    return response
 
 
 @api_view(['POST'])
